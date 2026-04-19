@@ -22,7 +22,7 @@ const gameboard = (function() {
     const checkTie = () => {
       if (!currentBoard.includes("")) {
         console.log("It's a draw!");
-        resetBoard;
+        resetBoard();
       }
     }
     const checkWin = () => {
@@ -93,9 +93,13 @@ const gameController = function() {
   logBoard();
   playTurn(0);
   playTurn(4);
+  playTurn(2);
   playTurn(1);
   playTurn(3);
-  playTurn(2);
+  playTurn(5);
+  playTurn(7);
+  playTurn(6);
+  playTurn(8);
 
   return {resetGame, playTurn}
 }
