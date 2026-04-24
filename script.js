@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // gameboard array with 9 boxes
   const gameboard = (function() {
     let currentBoard = ["", "", "", "", "", "", "", "", ""];
+    const cells = [...document.querySelectorAll(".cell")];
     
     const getBoard = () => currentBoard;
     
@@ -16,6 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const resetBoard = () => {
       currentBoard = ["", "", "", "", "", "", "", "", ""];
+      cells.forEach(cell => {
+        cell.textContent = "";
+        cell.style.backgroundColor = "";
+      });
     }
 
     const checkBoard = () => {
@@ -42,8 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 return players()[1].name;
               }
             }
+            
+            cells[condition[0]].style.backgroundColor = "lightgreen";
+            cells[condition[1]].style.backgroundColor = "lightgreen";
+            cells[condition[2]].style.backgroundColor = "lightgreen";
             console.log(`${winningPlayer()} wins!`);
-            resetBoard();
             return;
           }
         }
@@ -105,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       cell.addEventListener("click", () => {
         console.log(`Cell ${index + 1} clicked`);
         game.playTurn(index);
+        cell.textContent = gameboard.getBoard()[index];
       });
     })
     const resetButton = document.querySelector("#reset-button");
