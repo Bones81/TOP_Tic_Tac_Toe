@@ -105,9 +105,12 @@ document.addEventListener('DOMContentLoaded', () => {
     return {resetGame, playTurn}
   }
 
-  const game = gameController();
-
+  
   const displayController = function() {
+    const game = gameController();
+
+    
+    const message = document.querySelector("#message-box");
     const cells = [...document.querySelectorAll(".cell")];
     cells.forEach((cell, index) => {
       cell.addEventListener("click", () => {
@@ -116,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cell.textContent = gameboard.getBoard()[index];
       });
     })
+
     const resetButton = document.querySelector("#reset-button");
     resetButton.addEventListener("click", () => {
       game.resetGame();
